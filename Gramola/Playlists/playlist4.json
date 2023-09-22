@@ -1,0 +1,23 @@
+{
+    "playlist":{
+        "nombre": "Pop",
+            "canciones":[
+                {
+                    "id":0,
+                    "Title":"A",
+                    "Artist":"The FatRat, Laura Brehm",
+                    "Song":"Canciones/TheCalling.mp3",
+                    "Cover":"Prueba prueba prueba bla bla",
+                    "image":"img/thecalling.jpg"
+                },
+                {
+                    "id":1,
+                    "Title":"Faded",
+                    "Artist":"Alan Walker",
+                    "Song":"Canciones/Faded.mp3",
+                    "Cover":"Prueba prueba prueba bla bla",
+                    "image":"img/Faded.jpg"
+                }
+            ]
+    }
+}
