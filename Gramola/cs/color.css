@@ -33,17 +33,26 @@ aside::-webkit-scrollbar-thumb:hover {
     height: 12vh;
     margin: 20px;
     display: flex;
+    /*background-color:red;*/
+    align-items: center;
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+#Cancion:hover {
+  background-color: rgba(80, 80, 80, 1); /* Gris oscuro al pasar el ratón */
 }
 /* Por si acaso */
 #Cancion img{
-  height: 125px;
-  width: 125px;
-  margin: 1px;
+  height: 100px;
+  width: 100px;
+  margin-left: 5px;
+  margin-top: 3px;
+
 }
 /* CENTRAR TEXTO Y COLOR */
 #info{
+  /*background-color:green;*/
   color: white;
-  width: 100%;
+  width: 25%;
   height: 80%;
   margin: 10px;
   display: flex;         
@@ -84,7 +93,7 @@ ul{
   list-style-type: none;
 }
 li{
-  margin-top: 90px;
+  margin-top: 70px;
   text-align: center;
 }
 li a{
@@ -118,8 +127,8 @@ footer {
   
 }
 #infoimg img{
-  width: 90%;
-  height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   margin-left: 25px;
 }
  /* DIV TEXTO IMG*/
@@ -144,20 +153,27 @@ footer {
 #autor{
   font-family: Circular;
 }
+#duration{
+  font-family: Circularbold;
+  color: white;
+}
 /* BARRA CONTROLES  */
 #Controles{
-  width: 80%;
+  
+  width: 59%;
   height: 12vh;
   margin: 10px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  
 }
 /* boton */
 #Anterior img{
   width: 35px;
   height: 35px; 
   margin-right: 20px;
+  
 }
 #play img{
   width: 45px;

@@ -8,7 +8,8 @@
                     "Artist":"The FatRat, Laura Brehm",
                     "Song":"Canciones/TheCalling.mp3",
                     "Cover":"Prueba prueba prueba bla bla",
-                    "image":"img/thecalling.jpg"
+                    "image":"img/thecalling.jpg",
+                    "Duration":"3:54"
                 },
                 {
                     "id":1,
@@ -16,7 +17,53 @@
                     "Artist":"Alan Walker",
                     "Song":"Canciones/Faded.mp3",
                     "Cover":"Prueba prueba prueba bla bla",
-                    "image":"img/Faded.jpg"
+                    "image":"img/Faded.jpg",
+                    "Duration":"3:32"
+                },
+                {
+                    "id":2,
+                    "Title":"Apollo 69",
+                    "Artist":"Goblins from Mars",
+                    "Song":"Canciones/Apollo69.mp3",
+                    "Cover":"Prueba prueba prueba bla bla",
+                    "image":"img/Apollo69.jpeg",
+                    "Duration":"2:46"
+                },
+                {
+                    "id":3,
+                    "Title":"The Spectre",
+                    "Artist":"Alan Walker",
+                    "Song":"Canciones/TheSpectre.mp3",
+                    "Cover":"Prueba prueba prueba bla bla",
+                    "image":"img/TheSpectre.jpeg",
+                    "Duration":"3:34"
+                },
+                {
+                    "id":4,
+                    "Title":"Alone",
+                    "Artist":"Marshmello",
+                    "Song":"Canciones/Alone.mp3",
+                    "Cover":"Prueba prueba prueba bla bla",
+                    "image":"img/Alone.jpg",
+                    "Duration":"4:34"
+                },
+                {
+                    "id":5,
+                    "Title":"Wildcard",
+                    "Artist":"KSHMR, Sidnie Tipton",
+                    "Song":"Canciones/Wildcard.mp3",
+                    "Cover":"Prueba prueba prueba bla bla",
+                    "image":"img/Wildcard.jpg",
+                    "Duration":"3:09"
+                },
+                {
+                    "id":6,
+                    "Title":"Nevada",
+                    "Artist":"Vicetone, Cozi Zuehlsdorff",
+                    "Song":"Canciones/Nevada.mp3",
+                    "Cover":"Prueba prueba prueba bla bla",
+                    "image":"img/Nevada.jpg",
+                    "Duration":"3:29"
                 }
             ]
     }

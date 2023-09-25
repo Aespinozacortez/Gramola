@@ -1,13 +1,16 @@
 <?php
 $jsonFiles = glob('Playlists/*.json');          
-$playlists = [];                        //variable para guardar la info
+$playlists = [];                        
+$cancionesPorPlaylist = [];     
 foreach ($jsonFiles as $file) {                     //recorremos todos los ficheros json
     $jsonContent = file_get_contents($file);                //guardamos el contenido en la variable
     $jsonData = json_decode($jsonContent, true);
     $playlistName = $jsonData['playlist']['nombre'];        //guardamos el nombre de la playlist en la variable
-    $playlists[] = $playlistName;                           //guardamos los nombres con otra variable en formato array
-    $canciones = $jsonData['playlist']['canciones'];        //acceder a las canciones
-}   
+    $playlists[] = $playlistName;                           // variable para generar un bucle y asi mostrar los nombres de la PLAYLIST
+    $cancionesPorPlaylist[$playlistName] = $jsonData['playlist']['canciones']; //Se guardan las canciones por el nombre de cada PLAYLIST
+}
+    $playlistsData = json_encode($playlists);
+    $cancionesData = json_encode($cancionesPorPlaylist);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,21 +32,13 @@ foreach ($jsonFiles as $file) {                     //recorremos todos los fiche
         </div>
     </nav>
     <aside>
-        <div id="Cancion">
-            <img src="img/thecalling.jpg" alt="">
-            <div id="info">
-                <p id="titulo">Institut Cendrassos</p>
-                <p id="autor">Alejandro Espinoza</p>
-            </div>
+        <div id="Canciones">
+            <audio id="audioPlayer" controls style="display: none;">
+            </audio>
         </div>
     </aside>
     <footer>
         <div id="infoimg">
-            <img src="img/Cendrassos.png" alt="">
-            <div id="texto">
-                <p id="titulo">Institut Cendrassos</p>
-                <p id="autor">Alejandro Espinoza</p>
-            </div>
         </div>
         <div id="Controles">
             <div id="aleatorio">
@@ -65,7 +60,9 @@ foreach ($jsonFiles as $file) {                     //recorremos todos los fiche
         </div> 
     </footer>
     <script>
-        var datosDesdePHP = <?php echo json_encode($cancionPlay1); ?>;
+        var playlistsData = <?php echo $playlistsData; ?>;
+        var cancionesData = <?php echo $cancionesData; ?>;
+    </script>
     <script src="./app.js"></script>
 </body>
 </html>
