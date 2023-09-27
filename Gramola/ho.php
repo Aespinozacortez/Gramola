@@ -26,38 +26,47 @@ foreach ($jsonFiles as $file) {                     //recorremos todos los fiche
         <div id="playlist"> 
             <ul>
                 <?php foreach ($playlists as $playlist): ?>
-                    <li><a href=""class="playlist-link"><?php echo $playlist; ?></a></li>
+                    <li><a 
+                    href=""class="playlist-link"><?php echo $playlist; ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>
     </nav>
     <aside>
         <div id="Canciones">
-            <audio id="audioPlayer" controls style="display: none;">
+            <audio id="audioPlayer">
             </audio>
         </div>
     </aside>
     <footer>
         <div id="infoimg">
         </div>
-        <div id="Controles">
-            <div id="aleatorio">
-                <img src="img/Aleatorio.png" alt="">
+        <div id="container">
+            <div id="Controles">
+                <div id="aleatorio">
+                    <img src="img/Aleatorio.png" alt="">
+                </div>
+                <div id="Anterior">
+                    <img src="img/Anterior.png" alt="">
+                </div>
+                <div id="play">
+                    <img id="imgchange" src="img/Play.png" alt="Botón de reproducción/pausa">
+                </div>
+            
+                <div id="Siguiente">
+                    <img src="img/Siguiente.png" alt="">
+                </div>
+                <div id="stop">
+                    <img src="img/stop.png" alt="">
+                </div>
+            </div> 
+            <div id="Time">
+                    <span id="currentTime">0:00</span>
+                    <progress id="progressBar" value="0" max="100"></progress>
+                    <span id="duration">0:00</span>
             </div>
-            <div id="Anterior">
-                <img src="img/Anterior.png" alt="">
-            </div>
-            <div id="play">
-                <img id="imgchange" src="img/Play.png" alt="Botón de reproducción/pausa">
-            </div>
-           
-            <div id="Siguiente">
-                <img src="img/Siguiente.png" alt="">
-            </div>
-            <div id="repetir">
-                <img src="img/repetir.png" alt="">
-            </div>
-        </div> 
+        </div>
+        
     </footer>
     <script>
         var playlistsData = <?php echo $playlistsData; ?>;

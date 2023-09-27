@@ -2,7 +2,6 @@ var playlistElement = document.getElementById("playlist");
 var cancionElement = document.getElementById("Canciones");
 var audioPlayer = document.getElementById("audioPlayer");
 var infoimg = document.getElementById("infoimg");
-console.log(cancionesData)
 playlistElement.addEventListener("click", function(event) {
     if (event.target && event.target.tagName === "A") {     // Si hacemos click al div  y no es a una playlist se borran las canciones.
                                                             // Con esto comparamos el click si es un elemento html <a> se muestran las canciones
@@ -76,20 +75,30 @@ playlistElement.addEventListener("click", function(event) {
         });
     }
 });
+        // BARRA DE DURACION
+        const progressBar = document.getElementById('progressBar');
+        const currentTime = document.getElementById('currentTime');
+        const duration = document.getElementById('duration');
 
-/* BOTON PAUSA Y PLAY
-var pauseButton = document.querySelector("#play img");
-var imgChange = document.getElementById("imgchange");
-let isPlaying = false; 
+        audioPlayer.addEventListener('timeupdate', function() {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressBar.value = progress;
+        currentTime.textContent = formatTime(audioPlayer.currentTime);
+        });
 
-// evento para cambiar botón de pausa/reproducción
-pauseButton.addEventListener("click", function() {
-    if (isPlaying) {
-        imgChange.src = "./img/Play.png";
-    } else {
-        imgChange.src = "./img/pause.png"; 
-    }
-    isPlaying = !isPlaying; // Cambia el estado de reproducción
-});
+        audioPlayer.addEventListener('loadedmetadata', function() {
+        duration.textContent = formatTime(audioPlayer.duration);
+        });
 
-*/
+        function formatTime(time) {
+        const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+        const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+        return `${minutes}:${seconds}`;
+        }
+        progressBar.addEventListener('click', function(event) {
+            const progressBarWidth = progressBar.offsetWidth;
+            const clickX = event.offsetX;
+            const clickPercentage = (clickX / progressBarWidth) * 100;
+            const newTime = (clickPercentage / 100) * audioPlayer.duration;
+            audioPlayer.currentTime = newTime;
+          });
