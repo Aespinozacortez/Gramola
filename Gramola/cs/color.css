@@ -144,6 +144,13 @@ footer {
   color: white;
   font-size: 13px;
 }
+/* FUENTE TITULO + AUTOR */
+#titulo1{
+  font-family: Circularbold;
+}
+#autor1{
+  font-family: Circular;
+}
  /* FUENTE TITULO + AUTOR */
 #titulo{
   font-family: Circularbold;
