@@ -6,13 +6,12 @@ var nextButton = document.getElementById("Siguiente");
 var beforeButton = document.getElementById("Anterior");
 var randomButton = document.getElementById("aleatorio");
 var playButton = document.getElementById("play");
+var stopButton = document.getElementById("stop");
 var imgChange = document.getElementById("imgchange");
-var currentPlaylistName = null; // Variable para almacenar el nombre de la lista de reproducción actual
-var currentIndex = 0; // Variable para almacenar el índice de la canción actual
+var currentPlaylistName = null;
+var currentIndex = 0;
 var songs = [];
-var max = 0; // Suponiendo que "songs" es tu array de canciones
-
-
+var max = 0; 
 
 playlistElement.addEventListener("click", function(event) {
     if (event.target && event.target.tagName === "A") {
@@ -81,8 +80,23 @@ function loadSongs() {
         cancionElement.appendChild(songDiv);
     });
 }
-
-
+function updateSongInfo() {
+    var tituloP = document.createElement("p");
+    tituloP.id = "titulo";
+    tituloP.textContent = songs[currentIndex].Title;
+    var autorP = document.createElement("p");
+    autorP.id = "autor";
+    autorP.textContent = songs[currentIndex].Artist;
+    var infoDiv = document.createElement("div");
+    infoDiv.id = "texto";
+    var img = document.createElement("img");
+    img.src = songs[currentIndex].image;
+    infoDiv.appendChild(tituloP);
+    infoDiv.appendChild(autorP);
+    infoimg.innerHTML = "";
+    infoimg.appendChild(img);
+    infoimg.appendChild(infoDiv);
+}
 function playNextSong() {
     if (currentIndex +1 >= songs.length) {
         console.log(currentIndex)
@@ -94,23 +108,7 @@ function playNextSong() {
         audioPlayer.src = songs[currentIndex].Song;
         audioPlayer.load();
         audioPlayer.play();
-
-        // Actualiza la información de la canción
-        var tituloP = document.createElement("p");
-            tituloP.id = "titulo";
-            tituloP.textContent = songs[currentIndex].Title
-            var autorP = document.createElement("p");
-            autorP.id = "autor";
-            autorP.textContent = songs[currentIndex].Artist;
-            var infoDiv = document.createElement("div");
-            infoDiv.id = "texto";
-            var img = document.createElement("img");
-            img.src = songs[currentIndex].image;;
-            infoDiv.appendChild(tituloP);
-            infoDiv.appendChild(autorP);
-            infoimg.innerHTML = "";
-            infoimg.appendChild(img);
-            infoimg.appendChild(infoDiv);
+        updateSongInfo();
     }
 }
 function beforeSong() {
@@ -126,21 +124,7 @@ function beforeSong() {
         audioPlayer.src = songs[currentIndex].Song;
         audioPlayer.load();
         audioPlayer.play();
-        var tituloP = document.createElement("p");
-            tituloP.id = "titulo";
-            tituloP.textContent = songs[currentIndex].Title
-            var autorP = document.createElement("p");
-            autorP.id = "autor";
-            autorP.textContent = songs[currentIndex].Artist;
-            var infoDiv = document.createElement("div");
-            infoDiv.id = "texto";
-            var img = document.createElement("img");
-            img.src = songs[currentIndex].image;;
-            infoDiv.appendChild(tituloP);
-            infoDiv.appendChild(autorP);
-            infoimg.innerHTML = "";
-            infoimg.appendChild(img);
-            infoimg.appendChild(infoDiv);
+        updateSongInfo();
     }
 }
 
@@ -154,22 +138,7 @@ function randomsong() {
         audioPlayer.src = songs[currentIndex].Song;
         audioPlayer.load();
         audioPlayer.play();
-        console.log(currentIndex +" -- "+songs[currentIndex].Title)
-        var tituloP = document.createElement("p");
-        tituloP.id = "titulo";
-        tituloP.textContent = songs[currentIndex].Title
-        var autorP = document.createElement("p");
-        autorP.id = "autor";
-        autorP.textContent = songs[currentIndex].Artist;
-        var infoDiv = document.createElement("div");
-        infoDiv.id = "texto";
-        var img = document.createElement("img");
-        img.src = songs[currentIndex].image;;
-        infoDiv.appendChild(tituloP);
-        infoDiv.appendChild(autorP);
-        infoimg.innerHTML = "";
-        infoimg.appendChild(img);
-        infoimg.appendChild(infoDiv); 
+        updateSongInfo();
     }
 }
 function playstopSong() {
@@ -181,7 +150,13 @@ function playstopSong() {
         imgChange.src = "./img/play.png";
     }
 }
+function stopAudio() {
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
+    imgChange.src = "./img/play.png";
+}
 
+stopButton.addEventListener("click", stopAudio);
 playButton.addEventListener("click", playstopSong);
 randomButton.addEventListener("click", randomsong);
 beforeButton.addEventListener("click", beforeSong);

@@ -12,6 +12,18 @@ foreach ($jsonFiles as $file) {                     //recorremos todos los fiche
     $playlistsData = json_encode($playlists);
     $cancionesData = json_encode($cancionesPorPlaylist);
 ?>
+<?php
+session_start(); // Iniciar la sesión
+
+// Verificar si la variable de sesión "nombre" está definida
+if (isset($_SESSION["nombre"])) {
+    $nombre = $_SESSION["nombre"];
+    echo "Bienvenido, $nombre!";
+} else {
+    header("Location: formulario.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
