@@ -8,10 +8,12 @@ var randomButton = document.getElementById("aleatorio");
 var playButton = document.getElementById("play");
 var stopButton = document.getElementById("stop");
 var imgChange = document.getElementById("imgchange");
+var playpausa = Boolean;
 var currentPlaylistName = null;
 var currentIndex = 0;
 var songs = [];
 var max = 0; 
+playpausa = true;
 
 playlistElement.addEventListener("click", function(event) {
     if (event.target && event.target.tagName === "A") {
@@ -52,21 +54,7 @@ function loadSongs() {
             audioPlayer.load();
             audioPlayer.play();
             imgChange.src = "./img/pause.png";
-            var tituloP = document.createElement("p");
-            tituloP.id = "titulo";
-            tituloP.textContent = song.Title;
-            var autorP = document.createElement("p");
-            autorP.id = "autor";
-            autorP.textContent = song.Artist;
-            var infoDiv = document.createElement("div");
-            infoDiv.id = "texto";
-            var img = document.createElement("img");
-            img.src = song.image;
-            infoDiv.appendChild(tituloP);
-            infoDiv.appendChild(autorP);
-            infoimg.innerHTML = "";
-            infoimg.appendChild(img);
-            infoimg.appendChild(infoDiv);
+            updateSongInfo();
             audioPlayer.addEventListener("ended", playNextSong);
         });
 
@@ -78,9 +66,15 @@ function loadSongs() {
         songDiv.appendChild(durationP);
 
         cancionElement.appendChild(songDiv);
+        updateSongInfo();
+        audioPlayer.src = songs[currentIndex].Song;
+        audioPlayer.addEventListener("ended", playNextSong);
+
     });
 }
+
 function updateSongInfo() {
+    
     var tituloP = document.createElement("p");
     tituloP.id = "titulo";
     tituloP.textContent = songs[currentIndex].Title;
@@ -96,59 +90,58 @@ function updateSongInfo() {
     infoimg.innerHTML = "";
     infoimg.appendChild(img);
     infoimg.appendChild(infoDiv);
+    audioPlayer.load();
+    audioPlayer.play();
+
 }
 function playNextSong() {
-    if (currentIndex +1 >= songs.length) {
-        console.log(currentIndex)
-        console.log(songs.length)
+    if (currentIndex + 1 >= songs.length) {
         console.log("No hay más canciones disponibles.");
         nextButton.disabled = true;
     } else {
         currentIndex++;
+        updateSongInfo(); // Actualiza la información de la canción primero
         audioPlayer.src = songs[currentIndex].Song;
-        audioPlayer.load();
-        audioPlayer.play();
-        updateSongInfo();
+        playpausa = true;
+        playstopSong();
     }
 }
-function beforeSong() {
-    
-    if (currentIndex <=0) {
-         
-            beforeButton.disabled = true;
-            console.log("No hay más canciones para volver");
 
+function beforeSong() {
+    if (currentIndex <=0) {
+        beforeButton.disabled = true;
+        console.log("No hay más canciones para volver");
     } else {
         currentIndex--;
         console.log(currentIndex)
         audioPlayer.src = songs[currentIndex].Song;
-        audioPlayer.load();
-        audioPlayer.play();
-        updateSongInfo();
+        playpausa = true;
+        playstopSong();
     }
 }
 
 function randomsong() { 
     max = songs.length
-
     var randomIndex = Math.floor(Math.random() * max);
     currentIndex = randomIndex
-    
     if (currentIndex >= 0 & currentIndex < songs.length ) {
         audioPlayer.src = songs[currentIndex].Song;
-        audioPlayer.load();
-        audioPlayer.play();
-        updateSongInfo();
+        playpausa = true;
+        playstopSong();
     }
 }
 function playstopSong() {
-    if (audioPlayer.paused) {
-        audioPlayer.play();
+    if (playpausa) {
         imgChange.src = "./img/pause.png";
+        playpausa = false;
+        audioPlayer.play();
     } else {
         audioPlayer.pause();
         imgChange.src = "./img/play.png";
+        playpausa = true;
+
     }
+    updateSongInfo();
 }
 function stopAudio() {
     audioPlayer.pause();
