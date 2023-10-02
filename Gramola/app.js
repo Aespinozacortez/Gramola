@@ -8,12 +8,13 @@ var randomButton = document.getElementById("aleatorio");
 var playButton = document.getElementById("play");
 var stopButton = document.getElementById("stop");
 var imgChange = document.getElementById("imgchange");
+var volumen = document.getElementById("volumen");
+
 var playpausa = Boolean;
 var currentPlaylistName = null;
 var currentIndex = 0;
 var songs = [];
 var max = 0; 
-playpausa = true;
 
 playlistElement.addEventListener("click", function(event) {
     if (event.target && event.target.tagName === "A") {
@@ -26,8 +27,6 @@ playlistElement.addEventListener("click", function(event) {
         console.log(songs)
     }
 });
-
-
 function loadSongs() {
     cancionElement.innerHTML = "";
     songs.forEach(function(song) {
@@ -66,15 +65,16 @@ function loadSongs() {
         songDiv.appendChild(durationP);
 
         cancionElement.appendChild(songDiv);
+
         updateSongInfo();
         audioPlayer.src = songs[currentIndex].Song;
         audioPlayer.addEventListener("ended", playNextSong);
-
+        playpausa = false;
+        playstopSong();
     });
 }
 
 function updateSongInfo() {
-    
     var tituloP = document.createElement("p");
     tituloP.id = "titulo";
     tituloP.textContent = songs[currentIndex].Title;
@@ -90,9 +90,6 @@ function updateSongInfo() {
     infoimg.innerHTML = "";
     infoimg.appendChild(img);
     infoimg.appendChild(infoDiv);
-    audioPlayer.load();
-    audioPlayer.play();
-
 }
 function playNextSong() {
     if (currentIndex + 1 >= songs.length) {
@@ -106,7 +103,6 @@ function playNextSong() {
         playstopSong();
     }
 }
-
 function beforeSong() {
     if (currentIndex <=0) {
         beforeButton.disabled = true;
@@ -117,9 +113,9 @@ function beforeSong() {
         audioPlayer.src = songs[currentIndex].Song;
         playpausa = true;
         playstopSong();
+        updateSongInfo();
     }
 }
-
 function randomsong() { 
     max = songs.length
     var randomIndex = Math.floor(Math.random() * max);
@@ -128,6 +124,7 @@ function randomsong() {
         audioPlayer.src = songs[currentIndex].Song;
         playpausa = true;
         playstopSong();
+        updateSongInfo();
     }
 }
 function playstopSong() {
@@ -139,12 +136,10 @@ function playstopSong() {
         audioPlayer.pause();
         imgChange.src = "./img/play.png";
         playpausa = true;
-
     }
-    updateSongInfo();
 }
 function stopAudio() {
-    audioPlayer.pause();
+    playstopSong();
     audioPlayer.currentTime = 0;
     imgChange.src = "./img/play.png";
 }
@@ -154,8 +149,6 @@ playButton.addEventListener("click", playstopSong);
 randomButton.addEventListener("click", randomsong);
 beforeButton.addEventListener("click", beforeSong);
 nextButton.addEventListener("click", playNextSong);
-
-
 // BARRA DE DURACION
     const progressBar = document.getElementById('progressBar');
     const currentTime = document.getElementById('currentTime');
@@ -181,3 +174,9 @@ nextButton.addEventListener("click", playNextSong);
     const newTime = (clickPercentage / 100) * audioPlayer.duration;
     audioPlayer.currentTime = newTime;
     });
+// VOLUMEN DE LA CANCION
+
+audioPlayer.volume = volumen.value;
+volumen.addEventListener("input", function () {
+    audioPlayer.volume = volumen.value;
+});

@@ -18,7 +18,7 @@ session_start(); // Iniciar la sesión
 // Verificar si la variable de sesión "nombre" está definida
 if (isset($_SESSION["nombre"])) {
     $nombre = $_SESSION["nombre"];
-    echo "Bienvenido, $nombre!";
+   
 } else {
     header("Location: formulario.php");
     exit();
@@ -45,6 +45,9 @@ if (isset($_SESSION["nombre"])) {
         </div>
     </nav>
     <aside>
+        <div id="nombre">
+            <p><?php echo "Bienvenido, $nombre!";?></p>
+        </div>
         <div id="Canciones">
             <audio id="audioPlayer">
             </audio>
@@ -77,8 +80,11 @@ if (isset($_SESSION["nombre"])) {
                     <progress id="progressBar" value="0" max="100"></progress>
                     <span id="duration">0:00</span>
             </div>
+            
         </div>
-        
+        <div id="volumen1">
+            <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
+            </div>
     </footer>
     <script>
         var playlistsData = <?php echo $playlistsData; ?>;

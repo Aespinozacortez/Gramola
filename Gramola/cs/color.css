@@ -4,12 +4,12 @@
 }
 
 body {
-  background-color: black;
+  background-color: #010101;
   margin: 0;
   display: flex;
 }
 aside{
-  background-color: #202021;
+  background-color: #121212;
   width: 80%;
   height: 82vh;
   margin: 10px;
@@ -18,18 +18,34 @@ aside{
   overflow-x: hidden;
   scrollbar-width: thin;
 }
-
+#nombre{
+  display: block;
+  background-color: #2c2c2c;
+  width: 99%;
+  height: 7vh;
+  margin: 10px;
+  border-radius: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+#nombre p{
+  color: white;
+font-size: 30px;
+font-family: Circularbold;
+margin-right: 100px;
+}
 #Cancion{
-    width: 96%;
-    height: 12vh;
-    margin: 20px;
-    display: flex;
-    /*background-color:red;*/
-    align-items: center;
-    transition: background-color 0.3s ease; /* Transición suave */
+  width: 96%;
+  height: 12vh;
+  margin: 20px;
+  display: flex;
+  /*background-color:red;*/
+  align-items: center;
+  transition: background-color 0.3s ease; /* Transición suave */
 }
 #Cancion:hover {
-  background-color: rgba(80, 80, 80, 1); /* Gris oscuro al pasar el ratón */
+  background-color: #2c2c2c; /* Gris oscuro al pasar el ratón */
 }
 /* Por si acaso */
 #Cancion img{
@@ -57,7 +73,7 @@ aside{
   margin-left: 20px;
 }
 nav {
-  background-color: #202021;
+  background-color: #121212;
   width: 20%;
   height: 82vh;
   margin: 10px;
@@ -66,25 +82,34 @@ nav {
   overflow-x: hidden;
   scrollbar-width: thin;
 }
-/* SCROLL BAR FIREFOX XD */
+/* Estilos para la barra de desplazamiento en el elemento nav */
+nav::-webkit-scrollbar {
+  width: 12px;
+}
+
 nav::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 6px;
 }
+
 nav::-webkit-scrollbar-thumb:hover {
   background-color: #666;
 }
-/* COLOR DE SCROLL BAR CHROME */
-nav::-webkit-scrollbar {
-  width: 12px; /* Ancho de la barra de desplazamiento */
+
+/* Estilos para la barra de desplazamiento en el elemento aside */
+aside::-webkit-scrollbar {
+  width: 12px;
 }
- nav::-webkit-scrollbar-thumb {
-  background-color: #888; /* Color gris para la barra de desplazamiento */
-  border-radius: 6px; /* Radio de borde de la barra de desplazamiento */
+
+aside::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
 }
-nav::-webkit-scrollbar-thumb:hover {
-  background-color: #666; /* Color gris oscuro para la barra de desplazamiento en el estado de hover */
+
+aside::-webkit-scrollbar-thumb:hover {
+  background-color: #666;
 }
+
 #playlist{
   margin: 10%;
 }
@@ -109,7 +134,7 @@ li a{
 }
 
 footer {
-  background-color: black;
+  background-color: #010101;
   position: fixed;
   width: 100%;
   height: 15vh;
@@ -159,51 +184,82 @@ footer {
   font-family: Circular;
 }
 #currentTime{
-  font-family: Circularbold;
+  font-family: Circular;
   color: white;
+  font-size: 12px;
 }
 #duration{
-  font-family: Circularbold;
+  font-family: Circular;
   color: white;
+  font-size: 12px;
 }
-#container{     /* poner barra de duracion abajo de los controles */
+#container {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  align-items: center;
+  width: 59%;
   height: 15vh;
- /*  background-color: blue;*/
-  
 }
-/* BARRA CONTROLES  */
-#Controles{
-/*  background-color: red; */
-  width: 80%;
-  height: 5vh;
-  margin: 5px;
+#Controles {
+  margin-top: 35px;
+  width: 24%;
+  height: 65px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  margin-left: 17px;
 }
+
 #Time {
-/*  background-color: red; */
-  width: 58%;
-  height: 50px;
-  margin-left: 15%;
+  width: 68%;
+  height: 30px;
   align-items: center;
   justify-content: center;
-  
+  margin-bottom: 10px;
+  margin-left: 90px;
+}
+
+#volumen1 {
+  width: 20%;
+  height: 13px;
+  margin: 10px;
+  margin-top: 80px;
+}
+#volumen {
+  width: 40%;
+  height: 5px;
+  background-color: #494949;
+  border-radius: 10px;
+}
+/* barra de volumen a color blanco para firefox */
+#volumen::-moz-range-progress {
+  background-color: white;
+  width: 40%;
+  height: 5px;
+  border-radius: 10px;
 }
 #progressBar {
   width: 80%;
-  height: 10px;
+  height: 4px;
+  margin-bottom: 4.5px;
+  background-color: #494949;
+  border-radius: 10px;
+  border: none;
+}
+/* barra de duracion a color blanco para chrome */
+#progressBar::-webkit-progress-value {
+  background: linear-gradient(to right, white, white);
+  border-radius: 0;
+}
+/* barra de duracion a color blanco para firefox */
+#progressBar::-moz-progress-bar {
+  background: linear-gradient(to right, white, white);
 }
 /* boton */
 #Anterior img{
   width: 35px;
   height: 35px; 
   margin-right: 20px;
-  
 }
 #play img{
   width: 45px;
@@ -227,6 +283,7 @@ footer {
   height: 30px; 
   margin-right: 10px;
 }
+
 @font-face {
   font-family: 'Circular';
   src: url(/Fuente/Circular.otf);
