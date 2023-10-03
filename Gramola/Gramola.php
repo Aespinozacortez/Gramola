@@ -1,18 +1,12 @@
 <?php
-$jsonFiles = glob('Playlists/*.json');          
-$playlists = [];                        
-$cancionesPorPlaylist = [];     
-foreach ($jsonFiles as $file) {                     //recorremos todos los ficheros json
-    $jsonContent = file_get_contents($file);                //guardamos el contenido en la variable
-    $jsonData = json_decode($jsonContent, true);
-    $playlistName = $jsonData['playlist']['nombre'];        //guardamos el nombre de la playlist en la variable
-    $playlists[] = $playlistName;                           // variable para generar un bucle y asi mostrar los nombres de la PLAYLIST
-    $cancionesPorPlaylist[$playlistName] = $jsonData['playlist']['canciones']; //Se guardan las canciones por el nombre de cada PLAYLIST
+$playlists = [];
+
+foreach (glob("Playlists/*.json") as $file) {
+    $playlistData = json_decode(file_get_contents($file), true);
+    if ($playlistData) {
+        $playlists[] = $playlistData;
+    }
 }
-    $playlistsData = json_encode($playlists);
-    $cancionesData = json_encode($cancionesPorPlaylist);
-?>
-<?php
 session_start(); // Iniciar la sesión
 
 // Verificar si la variable de sesión "nombre" está definida
@@ -24,6 +18,8 @@ if (isset($_SESSION["nombre"])) {
     exit();
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +33,21 @@ if (isset($_SESSION["nombre"])) {
     <nav>
         <div id="playlist"> 
             <ul>
-                <?php foreach ($playlists as $playlist): ?>
-                    <li><a 
-                    href=""class="playlist-link"><?php echo $playlist; ?></a></li>
-                <?php endforeach; ?>
+            <?php
+            foreach ($playlists as $index => $playlist) {
+                echo '<li><a href="Gramola.php?playlist_id=' . $index . '">' . $playlist['playlist']['nombre'] . '</a></li>';
+            }
+            ?>
+            </ul>
+            <?php
+            if(isset($_GET['playlist_id'])) {
+                $playlistId = $_GET['playlist_id'];
+                if(isset($playlistId) && isset($playlists[$playlistId])) {
+                    $selectedPlaylist = $playlists[$playlistId];
+                    $playlistFileName = glob("*.json")[$playlistId];        //lee todos los ficheros y lo pone en esa variable
+                    $_SESSION["playlistfilename"] = $playlistFileName;
+                }}
+            ?>
             </ul>
         </div>
     </nav>
@@ -80,16 +87,14 @@ if (isset($_SESSION["nombre"])) {
                     <progress id="progressBar" value="0" max="100"></progress>
                     <span id="duration">0:00</span>
             </div>
-            
         </div>
         <div id="volumen1">
             <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
             </div>
     </footer>
     <script>
-        var playlistsData = <?php echo $playlistsData; ?>;
-        var cancionesData = <?php echo $cancionesData; ?>;
-    </script>
+        var musica =<?php echo json_encode($selectedPlaylist);?>
+     </script>   
     <script src="./app.js"></script>
 </body>
 </html>

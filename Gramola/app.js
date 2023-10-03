@@ -9,24 +9,13 @@ var playButton = document.getElementById("play");
 var stopButton = document.getElementById("stop");
 var imgChange = document.getElementById("imgchange");
 var volumen = document.getElementById("volumen");
-
 var playpausa = Boolean;
 var currentPlaylistName = null;
 var currentIndex = 0;
 var songs = [];
 var max = 0; 
-
-playlistElement.addEventListener("click", function(event) {
-    if (event.target && event.target.tagName === "A") {
-        event.preventDefault();
-        currentPlaylistName = event.target.textContent;
-        songs = cancionesData[currentPlaylistName];
-        currentIndex = 0;
-        cancionElement.innerHTML = "";
-        loadSongs();
-        console.log(songs)
-    }
-});
+songs = musica['playlist']['canciones'];
+loadSongs();
 function loadSongs() {
     cancionElement.innerHTML = "";
     songs.forEach(function(song) {
