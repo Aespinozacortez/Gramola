@@ -1,4 +1,5 @@
 <?php
+session_start(); // Iniciar la sesión
 $playlists = [];
 
 foreach (glob("Playlists/*.json") as $file) {
@@ -7,7 +8,7 @@ foreach (glob("Playlists/*.json") as $file) {
         $playlists[] = $playlistData;
     }
 }
-session_start(); // Iniciar la sesión
+
 
 // Verificar si la variable de sesión "nombre" está definida
 if (isset($_SESSION["nombre"])) {
@@ -44,12 +45,13 @@ if (isset($_SESSION["nombre"])) {
                 $playlistId = $_GET['playlist_id'];
                 if(isset($playlistId) && isset($playlists[$playlistId])) {
                     $selectedPlaylist = $playlists[$playlistId];
-                    $playlistFileName = glob("*.json")[$playlistId];        //lee todos los ficheros y lo pone en esa variable
+                    $playlistFileName = glob("Playlists/*.json")[$playlistId];        //lee todos los ficheros y lo pone en esa variable
                     $_SESSION["playlistfilename"] = $playlistFileName;
                 }}
             ?>
             </ul>
         </div>
+                
     </nav>
     <aside>
         <div id="nombre">
@@ -87,6 +89,10 @@ if (isset($_SESSION["nombre"])) {
                     <progress id="progressBar" value="0" max="100"></progress>
                     <span id="duration">0:00</span>
             </div>
+            <a href="subircanciones.html"><input type="button" value="Subir Canción"></a>
+            <form action="subircanciones.php" method="post" enctype="multipart/form-data">
+            <a href="crearplaylist.html"><input type="button" value="crear playlist"></a>
+            <form action="crearplaylist.php" method="post" enctype="multipart/form-data">
         </div>
         <div id="volumen1">
             <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />

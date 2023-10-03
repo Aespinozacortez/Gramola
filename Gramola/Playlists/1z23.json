@@ -1,0 +1,14 @@
+{
+    "playlist": {
+        "nombre": "1z23",
+        "canciones": [
+            {
+                "Title": "El circo",
+                "Artist": "Te esta llamando",
+                "Song": ".\/Canciones\/Te llama el Circo Don Comedia_w5QBet-UVv4.mp3",
+                "image": ".\/img\/elcirco.jpg",
+                "Duration": "3:00"
+            }
+        ]
+    }
+}

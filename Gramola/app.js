@@ -31,15 +31,11 @@ function loadSongs() {
         var autorP = document.createElement("p");
         autorP.id = "autor";
         autorP.textContent = song.Artist;
-        var durationP = document.createElement("p");
-        durationP.id = "duration";
-        durationP.textContent = song.Duration;
 
         songDiv.addEventListener("click", function() {
             nextButton.disabled = false;
             currentIndex = songs.indexOf(song);
-            audioPlayer.src = song.Song;
-            audioPlayer.load();
+            audioPlayer.src = song.Song;          
             audioPlayer.play();
             imgChange.src = "./img/pause.png";
             updateSongInfo();
@@ -51,7 +47,6 @@ function loadSongs() {
 
         songDiv.appendChild(img);
         songDiv.appendChild(infoDiv);
-        songDiv.appendChild(durationP);
 
         cancionElement.appendChild(songDiv);
 
@@ -62,6 +57,7 @@ function loadSongs() {
         playstopSong();
     });
 }
+
 
 function updateSongInfo() {
     var tituloP = document.createElement("p");
@@ -139,18 +135,20 @@ randomButton.addEventListener("click", randomsong);
 beforeButton.addEventListener("click", beforeSong);
 nextButton.addEventListener("click", playNextSong);
 // BARRA DE DURACION
-    const progressBar = document.getElementById('progressBar');
-    const currentTime = document.getElementById('currentTime');
-    const duration = document.getElementById('duration');
+const progressBar = document.getElementById('progressBar');
+const currentTime = document.getElementById('currentTime');
+const duration = document.getElementById('duration');
 
-    audioPlayer.addEventListener('timeupdate', function() {
+audioPlayer.addEventListener('loadedmetadata', function() {
+    // Actualiza la duración cuando se carga la metadatos
+    duration.textContent = formatTime(audioPlayer.duration);
+});
+
+audioPlayer.addEventListener('timeupdate', function() {
     const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
     progressBar.value = progress;
     currentTime.textContent = formatTime(audioPlayer.currentTime);
-    });
-    audioPlayer.addEventListener('loadedmetadata', function() {
-        duration.textContent = formatTime(audioPlayer.duration);
-    });
+});
     function formatTime(time) {
         const minutes = Math.floor(time / 60).toString().padStart(2, '0');
         const seconds = Math.floor(time % 60).toString().padStart(2, '0');
@@ -164,7 +162,6 @@ nextButton.addEventListener("click", playNextSong);
     audioPlayer.currentTime = newTime;
     });
 // VOLUMEN DE LA CANCION
-
 audioPlayer.volume = volumen.value;
 volumen.addEventListener("input", function () {
     audioPlayer.volume = volumen.value;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afegir Nova Cançó</title>
+    <title>Añadir Nueva Canción</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,10 +51,10 @@
 </head>
 <body>
     <div class="container">
-        <h2>Afegir Nova Cançó</h2>
+        <h2>Añadir Nueva Canción</h2>
         <form action="subircanciones.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="title">Títol:</label>
+                <label for="title">Título:</label>
                 <input type="text" id="title" name="title" required>
             </div>
             
@@ -64,17 +64,17 @@
             </div>
             
             <div class="form-group">
-                <label for="audio">Arxiu d'àudio (MP3):</label>
+                <label for="audio">Archivo de Audio (MP3):</label>
                 <input type="file" id="audio" name="audio" accept=".mp3" required>
             </div>
             
             <div class="form-group">
-                <label for="coverImage">Imatge de Portada (JPG, PNG):</label>
-                <input type="file" id="coverImage" name="coverImage" accept=".jpg, .png" required>
+                <label for="image">Imagen de Portada (JPG, PNG):</label>
+                <input type="file" id="image" name="image" accept=".jpg, .png" required>
             </div>
             
             <div class="form-group">
-                <input type="submit" value="Afegir Cançó">
+                <input type="submit" value="Añadir Canción">
             </div>
         </form>
     </div>

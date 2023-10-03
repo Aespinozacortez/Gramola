@@ -1,56 +1,57 @@
 {
-    "playlist":{
+    "playlist": {
         "nombre": "Electronica",
-            "canciones":[
-                {
-                    "Title":"The Calling",
-                    "Artist":"The FatRat, Laura Brehm",
-                    "Song":"Canciones/TheCalling.mp3",
-                    "image":"img/thecalling.jpg",
-                    "Duration":"3:54"
-                },
-                {
-                    "Title":"Faded",
-                    "Artist":"Alan Walker",
-                    "Song":"Canciones/Faded.mp3",
-                    "image":"img/Faded.jpg",
-                    "Duration":"3:32"
-                },
-                {
-                    "Title":"Apollo 69",
-                    "Artist":"Goblins from Mars",
-                    "Song":"Canciones/Apollo69.mp3",
-                    "image":"img/Apollo69.jpeg",
-                    "Duration":"2:46"
-                },
-                {
-                    "Title":"The Spectre",
-                    "Artist":"Alan Walker",
-                    "Song":"Canciones/TheSpectre.mp3",
-                    "image":"img/TheSpectre.jpeg",
-                    "Duration":"3:34"
-                },
-                {
-                    "Title":"Alone",
-                    "Artist":"Marshmello",
-                    "Song":"Canciones/Alone.mp3",
-                    "image":"img/Alone.jpg",
-                    "Duration":"4:34"
-                },
-                {
-                    "Title":"Wildcard",
-                    "Artist":"KSHMR, Sidnie Tipton",
-                    "Song":"Canciones/Wildcard.mp3",
-                    "image":"img/Wildcard.jpg",
-                    "Duration":"3:09"
-                },
-                {
-                    "Title":"Nevada",
-                    "Artist":"Vicetone, Cozi Zuehlsdorff",
-                    "Song":"Canciones/Nevada.mp3",
-                    "image":"img/Nevada.jpg",
-                    "Duration":"3:29"
-                }
-            ]
+        "canciones": [
+            {
+                "Title": "The Calling",
+                "Artist": "The FatRat, Laura Brehm",
+                "Song": "Canciones\/TheCalling.mp3",
+                "image": "img\/thecalling.jpg"
+            },
+            {
+                "Title": "Faded",
+                "Artist": "Alan Walker",
+                "Song": "Canciones\/Faded.mp3",
+                "image": "img\/Faded.jpg"
+            },
+            {
+                "Title": "Apollo 69",
+                "Artist": "Goblins from Mars",
+                "Song": "Canciones\/Apollo69.mp3",
+                "image": "img\/Apollo69.jpeg"
+            },
+            {
+                "Title": "The Spectre",
+                "Artist": "Alan Walker",
+                "Song": "Canciones\/TheSpectre.mp3",
+                "image": "img\/TheSpectre.jpeg"
+            },
+            {
+                "Title": "Alone",
+                "Artist": "Marshmello",
+                "Song": "Canciones\/Alone.mp3",
+                "image": "img\/Alone.jpg"
+            },
+            {
+                "Title": "Wildcard",
+                "Artist": "KSHMR, Sidnie Tipton",
+                "Song": "Canciones\/Wildcard.mp3",
+                "image": "img\/Wildcard.jpg"
+            },
+            {
+                "Title": "Nevada",
+                "Artist": "Vicetone, Cozi Zuehlsdorff",
+                "Song": "Canciones\/Nevada.mp3",
+                "image": "img\/Nevada.jpg"
+            },
+            {
+                "id": "651c4bd8a64b4",
+                "Title": "asd",
+                "Artist": "asd",
+                "Song": ".\/src\/Alone.mp3",
+                "Cover": ".\/img\/Nevada.jpg",
+                "image": ".\/img\/Nevada.jpg"
+            }
+        ]
     }
 }
