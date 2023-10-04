@@ -1,8 +1,10 @@
 <?php
     session_start(); 
+    
     if (isset($_SESSION["playlistfilename"])) {
         $json = $_SESSION["playlistfilename"];
     }
+    $playlistId = $_SESSION["playlistId"];
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $title = $_POST["title"];
         $artist = $_POST["artist"];
@@ -37,7 +39,7 @@
         file_put_contents($json, $jsonContent);
 
         // Redirigir al usuario a la página de la lista de reproducción u otra página de tu elección
-        header("Location: Gramola.php");
+        header("Location: Gramola.php?playlist_id=" . $playlistId); // redirecciona a la playlist seleccionada
         exit();
     }
     ?>

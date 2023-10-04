@@ -1,5 +1,6 @@
 var playlistElement = document.getElementById("playlist");
 var cancionElement = document.getElementById("Canciones");
+var formularioselement = document.getElementById("formularios")
 var audioPlayer = document.getElementById("audioPlayer");
 var infoimg = document.getElementById("infoimg");
 var nextButton = document.getElementById("Siguiente");
@@ -16,7 +17,9 @@ var songs = [];
 var max = 0; 
 songs = musica['playlist']['canciones'];
 loadSongs();
+
 function loadSongs() {
+    mostrarFormularios();
     cancionElement.innerHTML = "";
     songs.forEach(function(song, index) {
         var songDiv = document.createElement("div");
@@ -31,10 +34,10 @@ function loadSongs() {
         var autorP = document.createElement("p");
         autorP.id = "autor";
         autorP.textContent = song.Artist;
-
-        // Crear un formulario para eliminar la canción
+        
+        //FORMULARIO PARA ELIMINAR CANCION
         var deleteForm = document.createElement("form");
-        deleteForm.action = "eliminarcancion.php"; // Ruta al script PHP de eliminación
+        deleteForm.action = "eliminar_cancion.php"; // Ruta al script PHP de eliminación
         deleteForm.method = "post";
         
         // Crear un campo oculto para almacenar el índice de la canción
@@ -42,12 +45,10 @@ function loadSongs() {
         input.type = "hidden";
         input.name = "cancion_index";
         input.value = index; // El índice de la canción a eliminar
-        
         // Crear el botón "Eliminar" para eliminar la canción
         var deleteButton = document.createElement("button");
         deleteButton.textContent = "Eliminar";
-        deleteButton.className = "delete-button"; // Agregar una clase para identificar el botón
-        
+        deleteButton.className = "delete-button"; // Agregar una clase para identificar el botón    
         // Agregar funcionalidad al botón "Eliminar"
         deleteButton.addEventListener("click", function() {
             // Enviar el formulario cuando se haga clic en el botón "Eliminar"
@@ -64,8 +65,9 @@ function loadSongs() {
             audioPlayer.addEventListener("ended", playNextSong);  
              
         });
+       
 
-       // Agregar el campo oculto y el botón al formulario
+       // Agregar el campo oculto y el boton de eliminar cancion
        deleteForm.appendChild(input);
        deleteForm.appendChild(deleteButton);
 
@@ -79,6 +81,7 @@ function loadSongs() {
 
        cancionElement.appendChild(songDiv);
 
+
        updateSongInfo();
        audioPlayer.src = songs[currentIndex].Song;
        audioPlayer.addEventListener("ended", playNextSong);
@@ -86,6 +89,18 @@ function loadSongs() {
        playstopSong();
            
    });
+   playlistElement.addEventListener("click", function() {
+    mostrarFormularios(); // Llama a la función para mostrar los formularios
+});
+
+
+}
+
+function mostrarFormularios() {
+    var ocultar = document.getElementById("eliminar");
+    var ocultar2 = document.getElementById("subircancion");
+    subircancion.style.display = "block"; // Cambia el estilo para mostrar el elemento
+    ocultar.style.display = "block"; // Cambia el estilo para mostrar el elemento
 }
 
 function updateSongInfo() {

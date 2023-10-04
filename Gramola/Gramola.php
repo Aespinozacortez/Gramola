@@ -34,11 +34,17 @@ if (isset($_SESSION["nombre"])) {
     <nav>
         <div id="playlist"> 
             <ul>
+                <li>
+                    <a href="crear_playlist.html"><input type="button" id="crearplaylist" value="Crear Playlist"></a>
+                </li>
             <?php
             foreach ($playlists as $index => $playlist) {
                 echo '<li><a href="Gramola.php?playlist_id=' . $index . '">' . $playlist['playlist']['nombre'] . '</a></li>';
+                 // Agrega un botón para eliminar la playlist
+                echo '</li>';
             }
             ?>
+                
             </ul>
             <?php
             if(isset($_GET['playlist_id'])) {
@@ -58,7 +64,16 @@ if (isset($_SESSION["nombre"])) {
         <div id="nombre">
             <p><?php echo "Bienvenido, $nombre!";?></p>
         </div>
+        <div id="formularios">
+        <form action="eliminar_playlist.php" method="post" style="display:inline;">
+            <input type="hidden" name="playlist_index" value="<?php echo $index; ?>">
+            <button type="submit" id="eliminar">Eliminar Playlist</button>
+        </form>
+        <a href="subir_canciones.html"><input type="button" id="subircancion"value="Subir Canción"></a>
+        <form action="subir_canciones.php" method="post" enctype="multipart/form-data">
+        </div>
         <div id="Canciones">
+            
             <audio id="audioPlayer">
             </audio>
            
@@ -91,10 +106,7 @@ if (isset($_SESSION["nombre"])) {
                     <progress id="progressBar" value="0" max="100"></progress>
                     <span id="duration">0:00</span>
             </div>
-            <a href="subircanciones.html"><input type="button" value="Subir Canción"></a>
-            <form action="subircanciones.php" method="post" enctype="multipart/form-data">
-            <a href="crearplaylist.html"><input type="button" value="crear playlist"></a>
-            <form action="crearplaylist.php" method="post" enctype="multipart/form-data">
+            
         </div>
         <div id="volumen1">
             <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
