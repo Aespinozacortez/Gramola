@@ -18,7 +18,7 @@ songs = musica['playlist']['canciones'];
 loadSongs();
 function loadSongs() {
     cancionElement.innerHTML = "";
-    songs.forEach(function(song) {
+    songs.forEach(function(song, index) {
         var songDiv = document.createElement("div");
         songDiv.id = "Cancion";
         var img = document.createElement("img");
@@ -32,6 +32,28 @@ function loadSongs() {
         autorP.id = "autor";
         autorP.textContent = song.Artist;
 
+        // Crear un formulario para eliminar la canción
+        var deleteForm = document.createElement("form");
+        deleteForm.action = "eliminarcancion.php"; // Ruta al script PHP de eliminación
+        deleteForm.method = "post";
+        
+        // Crear un campo oculto para almacenar el índice de la canción
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "cancion_index";
+        input.value = index; // El índice de la canción a eliminar
+        
+        // Crear el botón "Eliminar" para eliminar la canción
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "Eliminar";
+        deleteButton.className = "delete-button"; // Agregar una clase para identificar el botón
+        
+        // Agregar funcionalidad al botón "Eliminar"
+        deleteButton.addEventListener("click", function() {
+            // Enviar el formulario cuando se haga clic en el botón "Eliminar"
+            deleteForm.submit();
+        });
+
         songDiv.addEventListener("click", function() {
             nextButton.disabled = false;
             currentIndex = songs.indexOf(song);
@@ -39,25 +61,32 @@ function loadSongs() {
             audioPlayer.play();
             imgChange.src = "./img/pause.png";
             updateSongInfo();
-            audioPlayer.addEventListener("ended", playNextSong);
+            audioPlayer.addEventListener("ended", playNextSong);  
+             
         });
 
-        infoDiv.appendChild(tituloP);
-        infoDiv.appendChild(autorP);
+       // Agregar el campo oculto y el botón al formulario
+       deleteForm.appendChild(input);
+       deleteForm.appendChild(deleteButton);
 
-        songDiv.appendChild(img);
-        songDiv.appendChild(infoDiv);
+       infoDiv.appendChild(tituloP);
+       infoDiv.appendChild(autorP);
+       songDiv.appendChild(img);
+       songDiv.appendChild(infoDiv);
+       
+       // Agregar el formulario al contenedor de canciones
+       songDiv.appendChild(deleteForm);
 
-        cancionElement.appendChild(songDiv);
+       cancionElement.appendChild(songDiv);
 
-        updateSongInfo();
-        audioPlayer.src = songs[currentIndex].Song;
-        audioPlayer.addEventListener("ended", playNextSong);
-        playpausa = false;
-        playstopSong();
-    });
+       updateSongInfo();
+       audioPlayer.src = songs[currentIndex].Song;
+       audioPlayer.addEventListener("ended", playNextSong);
+       playpausa = false;
+       playstopSong();
+           
+   });
 }
-
 
 function updateSongInfo() {
     var tituloP = document.createElement("p");

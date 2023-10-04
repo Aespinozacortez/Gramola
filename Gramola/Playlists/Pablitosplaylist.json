@@ -1,27 +1,6 @@
 {
     "playlist": {
         "nombre": "Pablitosplaylist",
-        "canciones": [
-            {
-                "id": "651c4c00dcd71",
-                "Title": "azxcZ",
-                "Artist": "asdasdasd",
-                "Song": ".\/src\/Alone.mp3",
-                "Cover": ".\/img\/Alone.jpg",
-                "image": ".\/img\/Alone.jpg"
-            },
-            {
-                "Title": "asdffff",
-                "Artist": "123123",
-                "Song": ".\/src\/Alone.mp3",
-                "image": ".\/img\/Faded.jpg"
-            },
-            {
-                "Title": "graca",
-                "Artist": "graca",
-                "Song": ".\/canciones\/Alone.mp3",
-                "image": ".\/img\/Pignoise.jpg"
-            }
-        ]
+        "canciones": []
     }
 }

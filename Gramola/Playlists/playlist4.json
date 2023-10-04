@@ -9,35 +9,6 @@
                 "Song": "Canciones\/Enfermo.mp3",
                 "Cover": "Prueba prueba prueba bla bla",
                 "image": "img\/Pignoise.jpg"
-            },
-            {
-                "id": 1,
-                "Title": "Faded",
-                "Artist": "Alan Walker",
-                "Song": "Canciones\/Faded.mp3",
-                "Cover": "Prueba prueba prueba bla bla",
-                "image": "img\/Faded.jpg"
-            },
-            {
-                "Title": "asdasdasd",
-                "Artist": "asdasdas",
-                "Song": ".\/Canciones\/Te llama el Circo Don Comedia_w5QBet-UVv4.mp3",
-                "image": ".\/img\/elcirco.jpg",
-                "Duration": "3:00"
-            },
-            {
-                "Title": "fiumba",
-                "Artist": "fiubmaa",
-                "Song": ".\/Canciones\/Te llama el Circo Don Comedia_w5QBet-UVv4.mp3",
-                "image": ".\/img\/elcirco.jpg",
-                "Duration": "3:00"
-            },
-            {
-                "Title": "piter",
-                "Artist": "s",
-                "Song": ".\/Canciones\/Te llama el Circo Don Comedia_w5QBet-UVv4.mp3",
-                "image": ".\/img\/stop.png",
-                "Duration": "3:00"
             }
         ]
     }

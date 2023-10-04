@@ -47,6 +47,7 @@ if (isset($_SESSION["nombre"])) {
                     $selectedPlaylist = $playlists[$playlistId];
                     $playlistFileName = glob("Playlists/*.json")[$playlistId];        //lee todos los ficheros y lo pone en esa variable
                     $_SESSION["playlistfilename"] = $playlistFileName;
+                    $_SESSION["playlistId"] = $playlistId;
                 }}
             ?>
             </ul>
@@ -60,6 +61,7 @@ if (isset($_SESSION["nombre"])) {
         <div id="Canciones">
             <audio id="audioPlayer">
             </audio>
+           
         </div>
     </aside>
     <footer>

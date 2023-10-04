@@ -1,23 +1,15 @@
 {
-    "playlist":{
+    "playlist": {
         "nombre": "Drill",
-            "canciones":[
-                {
-                    "id":0,
-                    "Title":"The Calling",
-                    "Artist":"The FatRat, Laura Brehm",
-                    "Song":"Canciones/TheCalling.mp3",
-                    "Cover":"Prueba prueba prueba bla bla",
-                    "image":"img/thecalling.jpg"
-                },
-                {
-                    "id":1,
-                    "Title":"Faded",
-                    "Artist":"Alan Walker",
-                    "Song":"Canciones/Faded.mp3",
-                    "Cover":"Prueba prueba prueba bla bla",
-                    "image":"img/Faded.jpg"
-                }
-            ]
+        "canciones": [
+            {
+                "id": 0,
+                "Title": "The Calling",
+                "Artist": "The FatRat, Laura Brehm",
+                "Song": "Canciones\/TheCalling.mp3",
+                "Cover": "Prueba prueba prueba bla bla",
+                "image": "img\/thecalling.jpg"
+            }
+        ]
     }
 }
