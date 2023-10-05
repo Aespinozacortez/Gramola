@@ -17,6 +17,7 @@ var songs = [];
 var max = 0; 
 songs = musica['playlist']['canciones'];
 loadSongs();
+console.log(musica)
 
 function loadSongs() {
     mostrarFormularios();
@@ -34,67 +35,65 @@ function loadSongs() {
         var autorP = document.createElement("p");
         autorP.id = "autor";
         autorP.textContent = song.Artist;
-        
-        //FORMULARIO PARA ELIMINAR CANCION
+
+        // FORMULARIO PARA ELIMINAR CANCIÓN
         var deleteForm = document.createElement("form");
         deleteForm.action = "eliminar_cancion.php"; // Ruta al script PHP de eliminación
         deleteForm.method = "post";
-        
+
         // Crear un campo oculto para almacenar el índice de la canción
         var input = document.createElement("input");
         input.type = "hidden";
         input.name = "cancion_index";
         input.value = index; // El índice de la canción a eliminar
-        // Crear el botón "Eliminar" para eliminar la canción
-        var deleteButton = document.createElement("button");
-        deleteButton.textContent = "Eliminar";
-        deleteButton.className = "delete-button"; // Agregar una clase para identificar el botón    
-        // Agregar funcionalidad al botón "Eliminar"
-        deleteButton.addEventListener("click", function() {
-            // Enviar el formulario cuando se haga clic en el botón "Eliminar"
+
+        // Crear la imagen de eliminación en lugar de un botón
+        var deleteImage = document.createElement("img");
+        deleteImage.src = "/img/eliminar.png"; // Ruta de la imagen
+        deleteImage.className = "delete-image"; // Agregar una clase para identificar la imagen
+
+        // Agregar funcionalidad al hacer clic en la imagen
+        deleteImage.addEventListener("click", function(event) {
+            // Enviar el formulario cuando se hace clic en la imagen
             deleteForm.submit();
         });
 
         songDiv.addEventListener("click", function() {
             nextButton.disabled = false;
             currentIndex = songs.indexOf(song);
-            audioPlayer.src = song.Song;          
+            audioPlayer.src = song.Song;
             audioPlayer.play();
             imgChange.src = "./img/pause.png";
             updateSongInfo();
-            audioPlayer.addEventListener("ended", playNextSong);  
-             
+            audioPlayer.addEventListener("ended", playNextSong);
         });
-       
 
-       // Agregar el campo oculto y el boton de eliminar cancion
-       deleteForm.appendChild(input);
-       deleteForm.appendChild(deleteButton);
+        // Agregar el campo oculto y la imagen de eliminación al formulario
+        deleteForm.appendChild(input);
+        deleteForm.appendChild(deleteImage);
 
-       infoDiv.appendChild(tituloP);
-       infoDiv.appendChild(autorP);
-       songDiv.appendChild(img);
-       songDiv.appendChild(infoDiv);
-       
-       // Agregar el formulario al contenedor de canciones
-       songDiv.appendChild(deleteForm);
+        infoDiv.appendChild(tituloP);
+        infoDiv.appendChild(autorP);
+        songDiv.appendChild(img);
+        songDiv.appendChild(infoDiv);
 
-       cancionElement.appendChild(songDiv);
+        // Agregar el formulario al contenedor de canciones
+        songDiv.appendChild(deleteForm);
 
+        cancionElement.appendChild(songDiv);
 
-       updateSongInfo();
-       audioPlayer.src = songs[currentIndex].Song;
-       audioPlayer.addEventListener("ended", playNextSong);
-       playpausa = false;
-       playstopSong();
-           
-   });
-   playlistElement.addEventListener("click", function() {
-    mostrarFormularios(); // Llama a la función para mostrar los formularios
-});
+        updateSongInfo();
+        audioPlayer.src = songs[currentIndex].Song;
+        audioPlayer.addEventListener("ended", playNextSong);
+        playpausa = false;
+        playstopSong();
+    });
 
-
+    playlistElement.addEventListener("click", function() {
+        mostrarFormularios(); // Llama a la función para mostrar los formularios
+    });
 }
+
 
 function mostrarFormularios() {
     var ocultar = document.getElementById("eliminar");

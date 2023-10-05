@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir Playlist</title>
+    <link rel="stylesheet" href="cs/color.css">
 </head>
 <body>
-    <h1>Añadir Playlist</h1>
-    <form action="crear_playlist.php" method="post">
-        <label for="nombre">Nombre de la Playlist:</label>
-        <input type="text" id="nombre" name="nombre" required><br>
-        
-        <button type="submit">Añadir Playlist</button>
-    </form>
+    
+    <div id="formulariocrearp">
+        <p id="titulof">Añadir Playlist</p>
+        <div id="aire">
+            <form action="crear_playlist.php" method="post">
+                <label for="nombre">Nombre de la Playlist:</label>
+                <input type="text" id="nombre" name="nombre" required><br>
+                <button type="submit">Añadir Playlist</button>
+            </form>
+        </div>
+       
+    </div>
+    
 </body>
 </html>

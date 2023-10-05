@@ -3,9 +3,6 @@ session_start();
 
 if (isset($_SESSION["playlistfilename"])) {
     $json = $_SESSION["playlistfilename"];
-} else {
-    header("Location: formulario.php"); // Si no está configurado, redirecciona al formulario para añadir el nombre del archivo JSON.
-    exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
