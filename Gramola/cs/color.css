@@ -503,3 +503,17 @@ h2{
 .delete-image:hover{
   transform: scale(1.2);
 }
+#ficha{
+ max-width: 100%;
+  height: 550px;
+  background-color: #504f4f;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-left: 18%;
+  margin-top: 3%;
+  text-align: center;
+}

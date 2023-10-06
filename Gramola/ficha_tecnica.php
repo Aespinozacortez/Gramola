@@ -39,7 +39,6 @@ if (isset($_COOKIE['playlist_counters'])) { //playlist
 
 // Tu array de números
 arsort($playlistCounters); // Ordena el array de contadores en orden descendente
-// Asegúrate de que $playlistNombres esté inicializado correctamente antes de usarlo
 
 ?>
 <!DOCTYPE html>
@@ -47,23 +46,28 @@ arsort($playlistCounters); // Ordena el array de contadores en orden descendente
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información del Usuario</title>
+    <title>Ficha Tecnica</title>
+    <link rel="stylesheet" href="cs/color.css">
 </head>
 <body>
-    <h1>Información Técnica del Usuario</h1>
-    <p>Nombre de Usuario: <?php echo $usuario; ?></p>
-    <p>Última Playlist Escuchada: <?php echo $ultimaPlaylist; ?></p>
-    <p>Fecha y Hora de la Última Escucha: <?php echo $fechaHora; ?></p>
+    <div id="ficha">
+        
+    
+        <h1 id="titulof">Información Técnica del Usuario</h1>
+        <p id="titulof">Nombre de Usuario: <?php echo $usuario; ?></p>
+        <p id="titulof">Última Playlist Escuchada: <?php echo $ultimaPlaylist; ?></p>
+        <p id="titulof">Fecha y Hora de la Última Playlist Escuchada: <?php echo $fechaHora; ?></p>
 
-    <h2>Reproducciones:</h2>
-    <p><?php echo "Playlists ordenadas por reproducciones: ".'<br>';
+        <h2 id="titulof">Reproducciones:</h2>
+        <p id="titulof"><?php echo "Playlists ordenadas por reproducciones: ".'<br>';
 
-foreach ($playlistCounters as $posicion => $contador) {
-    if (isset($playlistNombres[$posicion])) {
-        echo $playlistNombres[$posicion] . '<br>';
-    }
-}
-?>
-</p>
+        foreach ($playlistCounters as $posicion => $contador) {
+            if (isset($playlistNombres[$posicion])) {
+                echo $playlistNombres[$posicion] . '<br>';
+            }
+        }
+        ?>
+        </p>
+    </div>
 </body>
 </html>

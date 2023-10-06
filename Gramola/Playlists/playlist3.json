@@ -1,6 +1,25 @@
 {
     "playlist": {
         "nombre": "Jazz",
-        "canciones": []
+        "canciones": [
+            {
+                "Title": "Montagem",
+                "Artist": "Kepex",
+                "Song": ".\/canciones\/montagemprfunk.mp3",
+                "image": ".\/img\/Wildcard.jpg"
+            },
+            {
+                "Title": "Kepex",
+                "Artist": "Circo",
+                "Song": ".\/canciones\/circo.mp3",
+                "image": ".\/img\/elcirco.jpg"
+            },
+            {
+                "Title": "Montagem",
+                "Artist": "Montagem",
+                "Song": ".\/canciones\/montagemprfunk.mp3",
+                "image": ".\/img\/Wildcard.jpg"
+            }
+        ]
     }
 }

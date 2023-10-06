@@ -73,6 +73,9 @@ if(isset($_GET['playlist_id'])) {
                 <li>
                     <a href="crear_playlist.html" id="crearplaylist">Crear Playlist</a>
                 </li>
+                <li>
+                    <a href="ficha_tecnica.php">Ficha Tecnica</a>
+                </li>
             <?php
 if (!isset($_SESSION['nombrePlaylists'])) {
     $_SESSION['nombrePlaylists'] = [] ;
@@ -90,6 +93,9 @@ foreach ($playlists as $index => $playlist) {
     $_SESSION['url'] = $url;
 }
 ?>
+<li>
+
+</li>
         </div>
     </nav>
     <aside>
@@ -138,7 +144,7 @@ foreach ($playlists as $index => $playlist) {
                     <progress id="progressBar" value="0" max="100"></progress>
                     <span id="duration">0:00</span>
             </div>
-            <a href="ficha_tecnica.php">sssssssssssssssssssssss</a>
+            
         </div>
         <div id="volumen1">
             <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5" />
